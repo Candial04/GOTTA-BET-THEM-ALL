@@ -1,0 +1,250 @@
+/* src/components/SlotMachine.css */
+
+/* Página completa */
+.slot-machine {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+/* Fondo de la tragaperras - ocupa toda la pantalla */
+.machine-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/imagenes/tragaperras.png');
+  background-size: 90% auto;  /* tu tamaño original */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* Contenedor de los 3 reels - NO TOCO NADA DE TU CSS ORIGINAL */
+.reels-container {
+  position: absolute;
+  top: 25%;                    
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5%;
+  width: 41%;
+  z-index: 2;
+}
+
+/* Cada columna de reel (3 Pokémon por columna) */
+.reel-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Cada ítem del reel (Pokémon individual) */
+.reel-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Imagen del Pokémon (más pequeña) */
+.reel-image {
+  width: 65%;
+  height: 65%;
+  object-fit: contain;
+}
+
+.pokemon-name {
+  position: absolute;
+  bottom: 4px;
+  font-size: 0.8rem;
+  color: #fbbf24;
+  font-weight: bold;
+  text-shadow: 0 0 5px black;
+}
+
+/* Animación de tragaperras real al girar (bajada rápida) */
+.reels-container.spinning .reel-item {
+  animation: spin-down 0.12s linear infinite;
+}
+
+/* Animación de rueda bajando con blur */
+@keyframes spin-down {
+  0% { transform: translateY(0); filter: blur(0px); }
+  100% { transform: translateY(100%); filter: blur(3px); }
+}
+
+/* Desaceleración: cada columna para en diferente momento */
+.reel-column:nth-child(1) .reel-item { animation-delay: 0s; }
+.reel-column:nth-child(2) .reel-item { animation-delay: 0.4s; }
+.reel-column:nth-child(3) .reel-item { animation-delay: 0.8s; }
+
+/* Tabla de premios a la izquierda */
+.prize-table {
+  position: absolute;
+  top: 50%;
+  left: 100px;
+  transform: translateY(-50%);
+  background-color: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(8px);
+  border: 2px solid #fbbf24;
+  border-radius: 12px;
+  padding: 20px;
+  width: 220px;
+  z-index: 3;
+  text-align: center;
+}
+
+.prize-table h3 {
+  color: #fbbf24;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.prize-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prize-table th, .prize-table td {
+  padding: 8px;
+  border-bottom: 1px solid #374151;
+  font-size: 0.9rem;
+}
+
+.prize-table th {
+  color: #fbbf24;
+  font-weight: bold;
+}
+
+.prize-table td {
+  color: #ffffff;
+}
+
+/* Crédito y Premio en la zona superior de la máquina */
+.top-display {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+  height: 14%;
+  z-index: 3;
+  background-color: #000000; /* ← fondo negro sólido para tapar "CRÉDITO" y "PREMIO" de la imagen */
+}
+
+.credit, .prize {
+  text-align: center;
+}
+
+.credit span, .prize span {
+  font-size: 1.1rem;
+  color: #d1d5db;
+  display: block;
+}
+
+.value {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fbbf24;
+  text-shadow: 0 0 10px #fbbf24;
+}
+
+/* Controles */
+.controls {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 3;
+}
+
+.balance {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.balance span {
+  color: #fbbf24;
+  font-weight: bold;
+}
+
+.bet-control {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.bet-control input {
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+  background: #111;
+  border: 2px solid #fbbf24;
+  color: white;
+  border-radius: 8px;
+}
+
+.spin-btn {
+  background: linear-gradient(#fbbf24, #f59e0b);
+  color: black;
+  font-size: 1.5rem;
+  padding: 15px 50px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.spin-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.5);
+}
+
+.spin-btn:disabled {
+  background: #4b5563;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.result-message {
+  position: absolute;
+  bottom: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000000;
+  z-index: 3;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .reels-container { top: 26%; width: 45%; gap: 3%; }
+  .prize-table { width: 180px; font-size: 0.9rem; left: 10px; }
+  .top-display { width: 50%; }
+}
+
+@media (max-width: 767px) {
+  .reels-container { top: 27%; width: 55%; gap: 2%; }
+  .prize-table { display: none; } /* opcional: ocultar tabla en móvil pequeño */
+  .top-display { width: 70%; font-size: 1.4rem; }
+}
+
+@media (max-width: 510px) {
+  .reels-container { top: 28%; width: 65%; gap: 1.5%; }
+}

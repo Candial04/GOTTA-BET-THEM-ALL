@@ -1,0 +1,141 @@
+/* src/pages/Login.css */
+
+.login-page {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  background-color: #000000;
+}
+
+/* Fondo completo al 95% */
+.background-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/imagenes/Fondo.gif');
+  background-size: 95vw 95vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 1;
+}
+
+/* Contenedor negro inferior que tapa SOLO "PRESS START" */
+.bottom-login-overlay {
+  position: absolute;
+  bottom: 90px;
+  left: 300px;
+  width: 40%;
+  height: 22%;               /* altura ajustada para cubrir solo la barra negra inferior */
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Contenedor interno del formulario */
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 0 20px;
+}
+
+/* Formulario simple */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  background-color: #0a0a0a;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+}
+
+.toggle-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.toggle-btn:hover {
+  color: #fbbf24;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  color: #000000;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.25s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: linear-gradient(to right, #535252, #5e5c5c);
+  transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+  background: #4b5563;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.error-text {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  margin-top: 6px;
+  text-align: center;
+}
+
+.test-info {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.test-info p {
+  margin: 4px 0;
+}
+
+/* Responsive - ajusta la altura del contenedor negro en móvil si es necesario */
+@media (max-width: 767px) {
+  .bottom-login-overlay { height: 28%; }
+  .login-form { padding: 0 15px; }
+}
+
+@media (max-width: 510px) {
+  .bottom-login-overlay { height: 32%; }
+  .login-form { padding: 0 12px; }
+}
+
+@media (max-width: 480px) {
+  .bottom-login-overlay { height: 35%; }
+  .login-form { padding: 0 10px; }
+}
