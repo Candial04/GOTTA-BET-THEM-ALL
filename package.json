@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://candial04.github.io/GOTTA-BET-THEM-ALL",
-  
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -47,5 +46,4 @@
   "overrides": {
     "vite": "^8.0.0-beta.13"
   }
-  
 }

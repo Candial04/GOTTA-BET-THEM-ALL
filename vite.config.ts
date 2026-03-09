@@ -5,8 +5,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-
-  // Base para GitHub Pages (cambia GOTTA-BET-THEM-ALL por el nombre exacto de tu repo)
+  
   base: '/GOTTA-BET-THEM-ALL/',
 
   resolve: {
