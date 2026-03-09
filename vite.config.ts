@@ -5,21 +5,30 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    proxy: {
-      // Proxy solo para /api/*
-      '/api': {
-        target: 'https://reqres.in',
-        changeOrigin: true,
-        secure: true,
-        // NO quitamos /api → lo mantenemos para que llegue a /api/login
-        rewrite: (path) => path  // ← cambio clave: no hacemos replace
-      }
-    }
-  },
+
+  // Base para GitHub Pages (cambia GOTTA-BET-THEM-ALL por el nombre exacto de tu repo)
+  base: '/GOTTA-BET-THEM-ALL/',
+
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-    }
-  }
+    },
+  },
+
+  server: {
+    port: 5173,
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
+
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+  },
 })
