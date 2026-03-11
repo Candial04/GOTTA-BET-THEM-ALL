@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+GOTTA BET 'EM ALL
+Casino temático Pokémon con sistema de login (roles user/admin), tragaperras con sprites animados de PokéAPI y Showdown, panel de admin para cambiar Pokémon en tiempo real, diseño responsive y sincronización entre admin y juego.
+Tecnologías y versiones
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 18
+Vite 5
+TypeScript
+Tailwind CSS
+Zustand (store y persistencia)
+TanStack Query (react-query)
+React Router v6
+json-server (backend fake local)
 
-Currently, two official plugins are available:
+Licencia
+MIT
+Guía de instalación y ejecución
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Clona el repositorio:Bashgit clone https://github.com/Candial04/GOTTA-BET-THEM-ALL.git
+cd GOTTA-BET-THEM-ALL
+Instala dependencias:Bashnpm install
+Inicia el backend fake (json-server):Bashnpm run server(Esto levanta http://localhost:3001 con los datos de db.json)
+Inicia el frontend (Vite):Bashnpm run dev
+Abre en el navegador: http://localhost:5173
 
-## React Compiler
+Credenciales de prueba:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+User: user / root → va directo a tragaperras
+Admin: admin / root → panel de admin para gestionar Pokémon
 
-## Expanding the ESLint configuration
+Enlace al deploy en vivo
+https://candial04.github.io/GOTTA-BET-THEM-ALL
+Cómo ejecutar el backend y frontend al mismo tiempo
+Puedes abrir dos terminales:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Terminal 1: npm run server
+Terminal 2: npm run dev
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+¡Disfruta del casino Pokémon! 🎰🐾
